@@ -175,5 +175,17 @@ Using this may cause problem
 * All host endpoints
 * Including the control plane
         * (except for configured Calico "failsafe" ports)!
-To avoid these problem
-
+To avoid these problem. need to exclude kube-system and calico-system namespaces
+```
+cat <<EOF | calicoctl apply -f -
+apiVersion: projectcalico.org/v3
+kind: GlobalNetworkPolicy
+metadata:
+  name: default-app-policy
+spec:
+  namespaceSelector: has(projectcalico.org/name) && projectcalico.org/name not in {"kube-system", "calico-system"}
+  types:
+  - Ingress
+  - Egress
+EOF
+```
