@@ -1,4 +1,5 @@
-We will be creating 4 VMs (3 Kubernetes nodes and 1 standalone host) each with predefined static IP addresses:
+# We will be creating 4 VMs. 
+(3 Kubernetes nodes and 1 standalone host) each with predefined static IP addresses:
 
 Control (198.19.0.1) - Kubernetes control-plane node
 
