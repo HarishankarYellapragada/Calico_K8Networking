@@ -47,3 +47,13 @@ kube-system       svclb-traefik-pb72f                       2/2     Running     
 kube-system       svclb-traefik-l6mzn                       2/2     Running     0          32s
 kube-system       traefik-758cd5fc85-8hcdx                  1/1     Running     0          32s
 ```
+## Introduction to Sample Application
+
+Customer (which provides a simple web GUI)
+Summary (some middleware business logic)
+Database (the persistent datastore for the bank)
+
+![image](https://user-images.githubusercontent.com/14257200/116883959-2e2cf400-abf4-11eb-8a26-6c70c13cbad2.png)
+
+All the Kubernetes resources (Deployments, Pods, Services, Service Accounts, etc) for Yaobank will all be created within the yaobank namespace.
+
