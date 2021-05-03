@@ -1,13 +1,13 @@
 # Calico Lab
  We will be creating 4 VMs. (3 Kubernetes nodes and 1 standalone host) each with predefined static IP addresses:
 
-### Control (198.19.0.1) - Kubernetes control-plane node
+#### Control (198.19.0.1) - Kubernetes control-plane node
 
-### Node1 (198.19.0.2) - Kubernetes worker node
+#### Node1 (198.19.0.2) - Kubernetes worker node
 
-### Node2 (198.19.0.3) - Kubernetes worker node (optional to have 2nd worker nodes)
+#### Node2 (198.19.0.3) - Kubernetes worker node (optional to have 2nd worker nodes)
 
-### Host1 (198.19.15.254) - General purpose host
+#### Host1 (198.19.15.254) - General purpose host
 
 (Note that each VM will also have a second dynamically allocated IP address, but in the course we will always use the static IP addresses listed above.)
 
