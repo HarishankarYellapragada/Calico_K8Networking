@@ -97,7 +97,7 @@ kubectl get cs
 ```
 # Install Calicoctl on Cluster on a Single host
 1. Log into the host, open a terminal prompt, and navigate to the location where you want to install the binary.
-Tip: Consider navigating to a location that’s in your PATH. For example, /usr/local/bin/.
+Tip: Consider navigating to a location that’s in your PATH. For example, ``` /usr/local/bin/. ```
 
 2. Use the following command to download the calicoctl binary.
 ```
