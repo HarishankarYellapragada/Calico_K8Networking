@@ -96,3 +96,50 @@ spec:
       ports:
         - 80
 ```
+### Policy and Label Schemas
+```
+apiVersion: projectcalico.org/v3
+kind: NetworkPolicy
+metadata:
+  name: blue-policy
+  namespace: production
+spec:
+  selector: app == 'back-end'
+  ingress:
+  - action: Allow
+    protocol: TCP
+    source:
+      selector: app == 'back-end'
+    destination:
+      ports:
+        - 80
+  egress:
+  - action: Allow
+    protocol: TCP
+    destination:
+      selector: app == 'database'
+    destination:
+      ports:
+        - 80
+```
+Specifing microservices(app-labels) is another best practie to identify easily 
+```
+apiVersion: projectcalico.org/v3
+kind: NetworkPolicy
+metadata:
+  name: blue-policy
+  namespace: production
+spec:
+  selector: app == 'database'
+  ingress:
+  - action: Allow
+    protocol: TCP
+    source:
+      selector: database-client == 'true'
+    destination:
+      ports:
+        - 80
+  egress:
+  - action: Deny
+```
+Specify permission labels is another method among many options.
