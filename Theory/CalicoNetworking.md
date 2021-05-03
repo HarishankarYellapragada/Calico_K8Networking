@@ -43,7 +43,7 @@ spec:
 
 One of the calico feature includes in allowing and dening ingress.
 
-Istio Integration:
+## Istio Integration:
 
 * Single familiar network policy model
 * Match on L5-7 application layer attributes
@@ -51,3 +51,21 @@ Istio Integration:
 * Multiple enforcement points
     - Network Infrastructure layer
     - Service mesh layer
+```
+apiVersion: projectcalico.org/v3
+kind: GlobalNetworkPolicy
+metadata:
+  name: summary
+spec:
+  selector: app == 'summary'
+  ingress:
+  - action: Allow
+    http:
+      methods: ["GET"]
+      paths:
+          - exact: "/foo/bar"
+          - prefix: "/baz"
+    source:
+      serviceAccounts:
+          names: ["customer']
+```
