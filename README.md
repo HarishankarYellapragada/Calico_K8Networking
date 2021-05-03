@@ -107,9 +107,9 @@ curl -o calicoctl -O -L  "https://github.com/projectcalico/calicoctl/releases/do
 ```
 chmod +x calicoctl
 ```
-4. Set the file to be executable.
+check if calicoctl is installed correctly
 ```
-kubectl get cs
+calicoctl version
 ```
 Note: If the location of calicoctl is not already in your PATH, move the file to one that is or add its location to your PATH. This will allow you to invoke it without having to prepend its location.
 
