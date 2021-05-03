@@ -21,7 +21,7 @@ spec:
 Example with non namespace:
 ```
 apiVersion: projectcalico.org/v3
-kind: NetworkPolicy
+kind: GlobalNetworkPolicy
 metadata:
   name: blue-policy
 spec:
