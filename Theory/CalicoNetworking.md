@@ -25,7 +25,7 @@ kind: NetworkPolicy
 metadata:
   name: blue-policy
 spec:
-  order: 100      //Calico Feature
+  order: 100      
   selector: color == 'blue'
   ingress:
   - action: Deny
@@ -39,5 +39,15 @@ spec:
       ports:
           80
 ```
-order number is the priority among the network policies.
+```order```number is the priority among the network policies.
+
 One of the calico feature includes in allowing and dening ingress.
+
+Istio Integration:
+
+* Single familiar network policy model
+* Match on L5-7 application layer attributes
+* Match cryptographic identity of Service Accounts
+* Multiple enforcement points
+    - Network Infrastructure layer
+    - Service mesh layer
