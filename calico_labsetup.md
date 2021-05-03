@@ -1,5 +1,5 @@
 # Calico Lab 
-This lab consists of .. Steps. 
+This file consists of .. Steps. 
 
 ## 1. We will be creating 4 VMs. (3 Kubernetes nodes and 1 standalone host) each with predefined static IP addresses:
 
