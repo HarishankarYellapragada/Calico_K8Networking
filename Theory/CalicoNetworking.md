@@ -23,10 +23,10 @@ Example with non namespace:
 apiVersion: projectcalico.org/v3
 kind: GlobalNetworkPolicy
 metadata:
-  name: blue-policy
+  name: red-policy
 spec:
   order: 100      
-  selector: color == 'blue'
+  selector: color == 'red'
   ingress:
   - action: Deny
     source:
