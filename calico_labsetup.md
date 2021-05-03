@@ -12,6 +12,8 @@ Host1 (198.19.15.254) - General purpose host
 (Note that each VM will also have a second dynamically allocated IP address, but in the course we will always use the static IP addresses listed above.)
 
 ## Installing Tigera-operator
+#### The Tigera Operator manages the lifecycle of a Calico or Calico Enterprise installation on Kubernetes or OpenShift. Its goal is to make installation, upgrades, and ongoing lifecycle management of Calico and Calico Enterprise as simple and reliable as possible.
+
 The command below will install the operator onto our lab kubernetes cluster:
 ```
 kubectl create -f https://docs.projectcalico.org/archive/v3.16/manifests/tigera-operator.yaml
