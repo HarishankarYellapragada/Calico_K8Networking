@@ -1,3 +1,11 @@
+We will be creating 4 VMs (3 Kubernetes nodes and 1 standalone host) each with predefined static IP addresses:
+
+Control (198.19.0.1) - Kubernetes control-plane node
+Node1 (198.19.0.2) - Kubernetes worker node
+Node2 (198.19.0.3) - Kubernetes worker node
+Host1 (198.19.15.254) - General purpose host
+(Note that each VM will also have a second dynamically allocated IP address, but in the course we will always use the static IP addresses listed above.)
+
 ## Installing Tigera-operator
 The command below will install the operator onto our lab kubernetes cluster:
 ```
@@ -56,4 +64,35 @@ Database (the persistent datastore for the bank)
 ![image](https://user-images.githubusercontent.com/14257200/116883959-2e2cf400-abf4-11eb-8a26-6c70c13cbad2.png)
 
 All the Kubernetes resources (Deployments, Pods, Services, Service Accounts, etc) for Yaobank will all be created within the yaobank namespace.
+```
+kubectl apply -f https://raw.githubusercontent.com/tigera/ccol1/main/yaobank.yaml
+```
+## Verify the Sample Application
 
+### Check the Deployment Status
+To validate that the application has been deployed into your cluster, we will check the rollout status of each of the microservices.
+
+Check the customer microservice:
+```
+kubectl rollout status -n yaobank deployment/customer
+```
+Example output:
+```
+deployment "customer" successfully rolled out
+```
+Check the summary microservice:
+```
+kubectl rollout status -n yaobank deployment/summary
+```
+Example output:
+```
+deployment "summary" successfully rolled out
+```
+Check the database microservice:
+```
+kubectl rollout status -n yaobank deployment/database
+```
+Example output:
+```
+deployment "database" successfully rolled out
+```
