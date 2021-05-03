@@ -1,4 +1,4 @@
-
+## Calico Network Policy
 Calico supports both namespace and non-namespace(global) network policies
 Example with namespace:
 ```
@@ -69,7 +69,7 @@ spec:
       serviceAccounts:
           names: ["customer']
 ```
-## Best practices 
+## Best practices for Network Policy
 Should specify always both ingress and egress traffic
 ```
 apiVersion: projectcalico.org/v3
