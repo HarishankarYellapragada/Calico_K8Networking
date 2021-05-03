@@ -177,7 +177,6 @@ Using this may cause problem
         * (except for configured Calico "failsafe" ports)!
 To avoid these problem. need to exclude kube-system and calico-system namespaces
 ```
-cat <<EOF | calicoctl apply -f -
 apiVersion: projectcalico.org/v3
 kind: GlobalNetworkPolicy
 metadata:
@@ -187,5 +186,26 @@ spec:
   types:
   - Ingress
   - Egress
-EOF
 ```
+## Protecting Hosts
+```
+apiVersion: projectcalico.org/v3
+kind: HostEndPoints
+metadata:
+  name: my-host-eth0
+spec:
+  interface: eth0
+  node: my-host
+  expectedIPs: ["10.0.0.1"]
+```
+```
+apiVersion: projectcalico.org/v3
+kind: HostEndPoints
+metadata:
+  name: my-host-eth0
+spec:
+  interface: "*"
+  node: my-host
+  expectedIPs: ["10.0.0.1"]
+```
+"*" this corresponds to all network interfaces to the host. include hosts connected to the pods and loopback interfaces
