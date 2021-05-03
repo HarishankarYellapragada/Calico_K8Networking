@@ -105,6 +105,10 @@ curl -o calicoctl -O -L  "https://github.com/projectcalico/calicoctl/releases/do
 ```
 3. Set the file to be executable.
 ```
+chmod +x calicoctl
+```
+4. Set the file to be executable.
+```
 kubectl get cs
 ```
 Note: If the location of calicoctl is not already in your PATH, move the file to one that is or add its location to your PATH. This will allow you to invoke it without having to prepend its location.
