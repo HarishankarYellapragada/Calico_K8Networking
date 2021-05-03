@@ -1,3 +1,4 @@
+## Installing Tigera-operator
 The command below will install the operator onto our lab kubernetes cluster:
 ```
 kubectl create -f https://docs.projectcalico.org/archive/v3.16/manifests/tigera-operator.yaml
