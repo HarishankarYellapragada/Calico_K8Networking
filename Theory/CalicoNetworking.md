@@ -143,3 +143,37 @@ spec:
   - action: Deny
 ```
 Specify permission labels is another method among many options.
+##Default Deny
+Good practice is to apply default deny which wont allow traffic explicitly
+Per namespace:
+```
+apiVersion: projectcalico.org/v3
+kind: NetworkPolicy
+metadata:
+  name: default-deny
+  namespace: my-namespace
+spec:
+  podSelector: {}
+  policyTypes:
+  - Ingress
+  - Egress
+```
+For GlobalNetworkPolicy 
+```
+apiVersion: projectcalico.org/v3
+kind: GlobalNetworkPolicy
+metadata:
+  name: default-deny
+spec:
+  selector: all()
+  types:
+  - Ingress
+  - Egress
+```
+Using this may cause problem 
+* All pods in all namespaces
+* All host endpoints
+* Including the control plane
+        * (except for configured Calico "failsafe" ports)!
+To avoid these problem
+
