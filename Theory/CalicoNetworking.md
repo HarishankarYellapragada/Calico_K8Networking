@@ -69,3 +69,30 @@ spec:
       serviceAccounts:
           names: ["customer']
 ```
+## Best practices 
+Should specify always both ingress and egress traffic
+```
+apiVersion: projectcalico.org/v3
+kind: NetworkPolicy
+metadata:
+  name: blue-policy
+  namespace: production
+spec:
+  selector: color == 'blue'
+  ingress:
+  - action: Allow
+    protocol: TCP
+    source:
+      selector: color == 'red'
+    destination:
+      ports:
+        - 80
+  egress:
+  - action: Allow
+    protocol: TCP
+    destination:
+      selector: color == 'green'
+    destination:
+      ports:
+        - 80
+```
