@@ -1,5 +1,7 @@
-# Calico Lab
- We will be creating 4 VMs. (3 Kubernetes nodes and 1 standalone host) each with predefined static IP addresses:
+# Calico Lab 
+This lab consists of .. Steps. 
+
+## 1. We will be creating 4 VMs. (3 Kubernetes nodes and 1 standalone host) each with predefined static IP addresses:
 
 #### Control (198.19.0.1) - Kubernetes control-plane node
 
@@ -11,7 +13,7 @@
 
 (Note that each VM will also have a second dynamically allocated IP address, but in the course we will always use the static IP addresses listed above.)
 
-## Installing Tigera-operator
+## 2. Installing Tigera-operator
 #### The Tigera Operator manages the lifecycle of a Calico or Calico Enterprise installation on Kubernetes or OpenShift. Its goal is to make installation, upgrades, and ongoing lifecycle management of Calico and Calico Enterprise as simple and reliable as possible.
 
 The command below will install the operator onto our lab kubernetes cluster:
@@ -28,7 +30,7 @@ The output from this command should indicate that the operator pod is running:
 NAME                               READY   STATUS    RESTARTS   AGE
 tigera-operator-64f448dfb9-d2fdq   1/1     Running   0          2m33s
 ```
-## Validating the Calico installation
+## 3. Validating the Calico installation
 Following the configuration of the installation resource, Calico will begin deploying onto your cluster. This can be validated by running the following command:
 ```
 kubectl get tigerastatus/calico
@@ -62,7 +64,7 @@ kube-system       svclb-traefik-pb72f                       2/2     Running     
 kube-system       svclb-traefik-l6mzn                       2/2     Running     0          32s
 kube-system       traefik-758cd5fc85-8hcdx                  1/1     Running     0          32s
 ```
-## Introduction to Sample Application
+## 4. Introduction to Sample Application
 
 Customer (which provides a simple web GUI)
 Summary (some middleware business logic)
