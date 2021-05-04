@@ -1,3 +1,5 @@
+![caliconetworkimplementation](https://user-images.githubusercontent.com/14257200/117007990-3e0e0c00-acb8-11eb-96b4-3e8490e49cc9.PNG)
+
 ## Calico Network Policy
 Calico supports both namespace and non-namespace(global) network policies
 Example with namespace:
