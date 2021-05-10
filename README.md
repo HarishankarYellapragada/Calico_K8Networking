@@ -36,7 +36,7 @@ sysctl --system
 ```
 yum install -y yum-utils device-mapper-persistent-data lvm2
 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-yum install -y docker-ce-19.03.12 
+yum install -y docker
 systemctl enable --now docker
 ```
 ### Kubernetes Setup
@@ -55,7 +55,7 @@ EOF
 ```
 ##### Install Kubernetes components
 ```
-yum install -y kubeadm-1.18.5-0 kubelet-1.18.5-0 kubectl-1.18.5-0
+yum install -y kubeadm kubelet kubectl
 ```
 ##### Enable and Start kubelet service
 ```
