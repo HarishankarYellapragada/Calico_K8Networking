@@ -1,4 +1,4 @@
-# Install Kubernetes Cluster using kubeadm
+# Install Kubernetes Cluster using kubeadm on a simple Master and Worker node
 Follow this documentation to set up a Kubernetes cluster on __CentOS 7__.
 
 This documentation guides you in setting up a cluster with one master node and one worker node.
