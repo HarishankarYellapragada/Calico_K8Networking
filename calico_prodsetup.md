@@ -17,7 +17,7 @@ kubectl apply -f calico.yaml
 
 make a nodename file under /var/lib/calico/ on all nodes
 
-copy kube config file under /root/.kube/
+copy kube config file under /root/.kube/ on all nodes
 
 To avoid CrashLoopBackOff nodes use the following command on all nodes
 ~~~ txt
