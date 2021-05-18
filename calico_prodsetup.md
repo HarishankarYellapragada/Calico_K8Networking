@@ -21,7 +21,7 @@ copy kube config file under /root/.kube/
 
 To avoid CrashLoopBackOff nodes use the following command on all nodes
 ~~~ txt
-docker system prune -y
+docker system prune
 ~~~
 
 # Install Calicoctl on Cluster on a Single host (On Master)
