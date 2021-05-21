@@ -43,7 +43,7 @@ calicoctl version
 Note: If the location of calicoctl is not already in your PATH, move the file to one that is or add its location to your PATH. This will allow you to invoke it without having to prepend its location.
 
 
-# To install BGP route-to-router reflector
+# Install BGP route-to-router reflector (Optional)
 By default calico network work in a node-to-node mesh as follows
 
 ![image](https://user-images.githubusercontent.com/14257200/119192272-d85aa780-ba4d-11eb-87b6-54393d6fe58f.png)
