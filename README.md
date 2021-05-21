@@ -152,10 +152,12 @@ calicoctl apply -f bgp-peer.yaml
 ```
 
 Try to get 
-
-calicoctl get bgpconfig default  {if you get the below error, create one}
+```
+calicoctl get bgpconfig default  
 
 resource does not exist: BGPConfiguration(default) with error: bgpconfigurations.crd.projectcalico.org "default" not found
+```
+{if you get the below error, create one}
 
 ## bgp-config.yaml
 
