@@ -173,7 +173,7 @@ spec:
 calicoctl apply -f bgp-peer.yaml
 ```
 
-Try to get 
+## Try to get bgp-config yeaml file
 ```
 calicoctl get bgpconfig default  
 
