@@ -115,7 +115,29 @@ Note: If the location of calicoctl is not already in your PATH, move the file to
 
 
 # To install BGP route-to-router reflector
-https://www.tigera.io/wp-content/uploads/2019/03/route-reflection.png
+By default calico network work in a node-to-node mesh as follows
+![image](https://user-images.githubusercontent.com/14257200/119192272-d85aa780-ba4d-11eb-87b6-54393d6fe58f.png)
+
+When requirement grows (100's of nodes), node-to-node mesh network may not be sustainable or scalable. To avoid this, route-reflectors are dedicated nodes to make the routes more efficient and scalable option.
+![image](https://user-images.githubusercontent.com/14257200/119192247-ced13f80-ba4d-11eb-95ca-90056d681835.png)
+
+Create the following yaml files 
+
+## rr-peers.yaml
+```
+kind: BGPPeer
+apiVersion: projectcalico.org/v3
+metadata:
+  name: rr-mesh
+spec:
+  nodeSelector: has(route-reflector)
+  peerSelector: has(route-reflector)
+```
+```
+calicoctl apply -f rr-peers.yaml
+```
+## bgp-peer.yaml
+
 ```
 kind: BGPPeer
 apiVersion: projectcalico.org/v3
@@ -125,8 +147,16 @@ spec:
   nodeSelector: !has(route-reflector)
   peerSelector: has(route-reflector)
 ```
+```
+calicoctl apply -f bgp-peer.yaml
+```
 
-bgp-config.yaml
+Try to get 
+
+calicoctl get bgpconfig default  {if you get the below error, create one}
+resource does not exist: BGPConfiguration(default) with error: bgpconfigurations.crd.projectcalico.org "default" not found
+
+## bgp-config.yaml
 
 ```
 apiVersion: projectcalico.org/v3
@@ -137,4 +167,7 @@ spec:
   logSeverityScreen: Info
   nodeToNodeMeshEnabled: false
   asNumber: 63400
+```
+```
+calicoctl apply -f bgp-config.yaml
 ```
