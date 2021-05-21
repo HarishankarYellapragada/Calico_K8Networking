@@ -123,6 +123,16 @@ When requirement grows to 100's/1000's of nodes, node-to-node mesh network may n
 
 ![image](https://user-images.githubusercontent.com/14257200/119192247-ced13f80-ba4d-11eb-95ca-90056d681835.png)
 
+Select few nodes from you kubernetes cluster to make them router reflectors.
+```
+calicoctl get node nodename --export -o yaml > filename.yaml
+```
+Example: calicoctl get node tmp-k8swk9c3 --export -o yaml > wk9.yaml
+
+nodename is the Worker node name
+
+
+In the above 
 Create the following yaml files 
 
 ## rr-peers.yaml
