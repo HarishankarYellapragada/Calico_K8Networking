@@ -24,7 +24,7 @@ To avoid CrashLoopBackOff nodes use the following command on all nodes
 docker system prune
 ~~~
 
-# Install Calicoctl on Cluster on a Single host (On Master)
+# Install Calicoctl on Cluster on a Single host
 1. Log into the host, open a terminal prompt, and navigate to the location where you want to install the binary.
 Tip: Consider navigating to a location that’s in your PATH. For example, ``` /usr/local/bin/. ```
 
@@ -42,6 +42,87 @@ calicoctl version
 ```
 Note: If the location of calicoctl is not already in your PATH, move the file to one that is or add its location to your PATH. This will allow you to invoke it without having to prepend its location.
 
+
+# To install BGP route-to-router reflector
+By default calico network work in a node-to-node mesh as follows
+
+![image](https://user-images.githubusercontent.com/14257200/119192272-d85aa780-ba4d-11eb-87b6-54393d6fe58f.png)
+
+When requirement grows to 100's/1000's of nodes, node-to-node mesh network may not be sustainable or scalable. To avoid this, route-reflectors are dedicated nodes to make the routes more efficient and scalable option.
+
+![image](https://user-images.githubusercontent.com/14257200/119192247-ced13f80-ba4d-11eb-95ca-90056d681835.png)
+
+Select few nodes from you kubernetes cluster to make them router reflectors.
+```
+calicoctl get node nodename --export -o yaml > filename.yaml
+```
+Example: calicoctl get node tmp-k8swk9c3 --export -o yaml > wk9.yaml
+
+Once you get all your nodename yaml files, add the following in each node yaml file
+```
+labels:
+        route-reflector: true
+spec:
+  bgp:
+        routeReflectorClusterID: 1.0.0.1
+```
+Replace all yaml files indivudually with following command
+```
+calicoctl apply -f filename.yaml
+```
+## Create the following yaml files ( rr-peers.yaml, bgp-peer.yaml, bgp-config.yaml)
+
+## a) rr-peers.yaml
+```
+kind: BGPPeer
+apiVersion: projectcalico.org/v3
+metadata:
+  name: rr-mesh
+spec:
+  nodeSelector: has(route-reflector)
+  peerSelector: has(route-reflector)
+```
+```
+calicoctl apply -f rr-peers.yaml
+```
+## b) bgp-peer.yaml
+
+```
+kind: BGPPeer
+apiVersion: projectcalico.org/v3
+metadata:
+  name: peer-to-rrs
+spec:
+  nodeSelector: !has(route-reflector)
+  peerSelector: has(route-reflector)
+```
+```
+calicoctl apply -f bgp-peer.yaml
+```
+
+## Try to get bgp-config Yaml file
+```
+calicoctl get bgpconfig default  
+
+resource does not exist: BGPConfiguration(default) with error: bgpconfigurations.crd.projectcalico.org "default" not found
+```
+{if you get the below error, create one}
+
+## c) bgp-config.yaml
+
+```
+apiVersion: projectcalico.org/v3
+kind: BGPConfiguration
+metadata:
+  name: default
+spec:
+  logSeverityScreen: Info
+  nodeToNodeMeshEnabled: false
+  asNumber: 63400
+```
+```
+calicoctl apply -f bgp-config.yaml
+```
 
 
 
