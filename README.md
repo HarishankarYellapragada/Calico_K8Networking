@@ -115,6 +115,7 @@ Note: If the location of calicoctl is not already in your PATH, move the file to
 
 
 # To install BGP route-to-router reflector
+https://www.tigera.io/wp-content/uploads/2019/03/route-reflection.png
 ```
 kind: BGPPeer
 apiVersion: projectcalico.org/v3
@@ -124,8 +125,10 @@ spec:
   nodeSelector: !has(route-reflector)
   peerSelector: has(route-reflector)
 ```
+
+bgp-config.yaml
+
 ```
-cat bgp-config.yaml
 apiVersion: projectcalico.org/v3
 kind: BGPConfiguration
 metadata:
@@ -134,4 +137,4 @@ spec:
   logSeverityScreen: Info
   nodeToNodeMeshEnabled: false
   asNumber: 63400
-  ```
+```
