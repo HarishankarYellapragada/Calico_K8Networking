@@ -143,9 +143,9 @@ Replace all yaml files indivudually with following command
 ```
 calicoctl apply -f filename.yaml
 ```
-Create the following yaml files 
+## Create the following yaml files ( rr-peers.yaml, bgp-peer.yaml, bgp-config.yaml)
 
-## rr-peers.yaml
+## a) rr-peers.yaml
 ```
 kind: BGPPeer
 apiVersion: projectcalico.org/v3
@@ -158,7 +158,7 @@ spec:
 ```
 calicoctl apply -f rr-peers.yaml
 ```
-## bgp-peer.yaml
+## b) bgp-peer.yaml
 
 ```
 kind: BGPPeer
@@ -181,7 +181,7 @@ resource does not exist: BGPConfiguration(default) with error: bgpconfigurations
 ```
 {if you get the below error, create one}
 
-## bgp-config.yaml
+## c) bgp-config.yaml
 
 ```
 apiVersion: projectcalico.org/v3
