@@ -129,16 +129,21 @@ calicoctl get node nodename --export -o yaml > filename.yaml
 ```
 Example: calicoctl get node tmp-k8swk9c3 --export -o yaml > wk9.yaml
 
-nodename is the Worker node name, add the following thing in each node yaml file
+nodename is the Worker node name
+
+Once you get all your nodename yaml files, add the following in each node yaml file
 ```
 labels:
         route-reflector: true
 spec:
   bgp:
         routeReflectorClusterID: 1.0.0.1
-
 ```
-Once you get all your nodename yaml files. Create the following yaml files 
+Replace all yaml files with 
+```
+calicoctl apply -f filename.yaml
+```
+Create the following yaml files 
 
 ## rr-peers.yaml
 ```
