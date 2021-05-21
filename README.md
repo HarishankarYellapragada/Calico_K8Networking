@@ -116,9 +116,11 @@ Note: If the location of calicoctl is not already in your PATH, move the file to
 
 # To install BGP route-to-router reflector
 By default calico network work in a node-to-node mesh as follows
+
 ![image](https://user-images.githubusercontent.com/14257200/119192272-d85aa780-ba4d-11eb-87b6-54393d6fe58f.png)
 
-When requirement grows (100's of nodes), node-to-node mesh network may not be sustainable or scalable. To avoid this, route-reflectors are dedicated nodes to make the routes more efficient and scalable option.
+When requirement grows to 100's/1000's of nodes, node-to-node mesh network may not be sustainable or scalable. To avoid this, route-reflectors are dedicated nodes to make the routes more efficient and scalable option.
+
 ![image](https://user-images.githubusercontent.com/14257200/119192247-ced13f80-ba4d-11eb-95ca-90056d681835.png)
 
 Create the following yaml files 
