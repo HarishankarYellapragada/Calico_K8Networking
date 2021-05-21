@@ -24,7 +24,7 @@ To avoid CrashLoopBackOff nodes use the following command on all nodes
 docker system prune
 ~~~
 
-# Install Calicoctl on Cluster on a Single host
+# Install Calicoctl on a Single host
 1. Log into the host, open a terminal prompt, and navigate to the location where you want to install the binary.
 Tip: Consider navigating to a location that’s in your PATH. For example, ``` /usr/local/bin/. ```
 
