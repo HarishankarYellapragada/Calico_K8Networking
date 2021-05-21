@@ -129,8 +129,6 @@ calicoctl get node nodename --export -o yaml > filename.yaml
 ```
 Example: calicoctl get node tmp-k8swk9c3 --export -o yaml > wk9.yaml
 
-nodename is the Worker node name
-
 Once you get all your nodename yaml files, add the following in each node yaml file
 ```
 labels:
