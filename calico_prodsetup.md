@@ -136,4 +136,7 @@ calicoctl apply -f bgp-config.yaml
 
 
 
-ref: https://docs.projectcalico.org/getting-started/kubernetes/self-managed-onprem/onpremises
+ref: 
+https://docs.projectcalico.org/getting-started/kubernetes/self-managed-onprem/onpremises
+
+https://www.tigera.io/blog/configuring-route-reflectors-in-calico/#:~:text=Once%20started%2C%20Calico%20runs%20a,an%20IP%20range%20of%2010.30.
