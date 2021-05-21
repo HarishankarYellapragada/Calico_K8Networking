@@ -139,7 +139,7 @@ spec:
   bgp:
         routeReflectorClusterID: 1.0.0.1
 ```
-Replace all yaml files with 
+Replace all yaml files indivudually with following command
 ```
 calicoctl apply -f filename.yaml
 ```
